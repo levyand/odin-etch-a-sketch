@@ -13,7 +13,3 @@ body {
 .block {
   background-color: white;
 }
-
-.block.active {
-  background-color: black;
-}

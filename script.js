@@ -12,16 +12,26 @@ function setupGrid(dimension) {
   for (let i = 0; i < blockCount; i++) {
     const block  = document.createElement('div');
     block.classList.add('block');
-    block.addEventListener('mouseover', (e) => {
-      const block = e.target;
-
-      if (block.classList.contains('active')) return;
-
-      block.classList.add('active');
-    });
+    block.addEventListener('mouseover', (e) => addColor(e.target));
 
     container.appendChild(block);
   }
+}
+
+function addColor(block) {
+  const hue = block.dataset.hue ? parseInt(block.dataset.hue) : 
+      Math.floor(Math.random() * 360);
+  const light = block.dataset.light ? parseInt(block.dataset.light) - 5 : 50;
+
+  if (light < 0) return;
+
+  block.dataset.hue = hue;
+  block.dataset.light = light;
+  block.style.backgroundColor = hsl(hue, 100, light);
+}
+
+function hsl(hue, saturation, light) {
+  return `hsl(${hue}, ${saturation}%, ${light}%)`;
 }
 
 function handleReset() {
