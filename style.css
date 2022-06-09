@@ -8,8 +8,10 @@ body {
   width: 600px;
   height: 600px;
   margin: 0 auto;
+  border: 1px solid black;
 }
 
 .block {
   background-color: white;
+  border: 1px solid black;
 }
